@@ -1,0 +1,21 @@
+#version 450 core
+layout (location = 0) in vec3 VertPos;
+layout (location = 1) in vec3 RGBA;
+layout (location = 2) in vec3 Normals;
+uniform mat4 Pr;
+uniform mat3 M;
+uniform vec3 b;
+uniform vec3 lightR;
+out vec3 color;
+out vec3 normal;
+out vec3 incidentRay;
+out vec3 viewVector;
+void main(){
+   gl_Position = Pr*vec4( M*VertPos+b, 1.0f);
+   //color = VertPos;
+   color = RGBA;
+   //color = vec3(1.0f, 1.0f, 1.0f);
+   normal = normalize(M*Normals);
+   incidentRay = lightR-(M*VertPos+b);
+   viewVector = M*VertPos+b;
+}

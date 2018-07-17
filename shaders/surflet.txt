@@ -1,0 +1,11 @@
+		"#version 450 core\n"
+		"layout (location = 0) in vec3 VertPos;\n"
+		"uniform mat3 M;\n"
+		"uniform mat4 Pr;\n"
+		"uniform vec3 b;\n"
+		"uniform vec2 grad;\n"		
+		"out float surfletH;\n"
+		"void main(){\n"
+		"   surfletH=4.f*cos(VertPos.x)*cos(VertPos.x)*cos(VertPos.y)*cos(VertPos.y)*dot(VertPos.xy,grad);\n"
+		"   gl_Position = Pr*vec4( (M*vec3(VertPos.xy, surfletH))+vec3(b.x,b.y,b.z-5.0f), 1.0f);\n"
+		"}\0";

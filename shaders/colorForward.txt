@@ -1,0 +1,12 @@
+#version 450 core
+in vec3 color;
+in vec3 normal;
+in vec3 incidentRay;
+in vec3 viewVector;
+out vec4 FragColor;
+float diffuse;
+void main() {
+   diffuse = max(dot( normalize(incidentRay), normal), 0.f);
+   float ambient = .05f;
+   FragColor =  (( (diffuse*50.f) / (length(incidentRay)*length(incidentRay)) )+ambient) * vec4(color,.5f);
+}

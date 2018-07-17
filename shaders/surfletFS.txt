@@ -1,0 +1,7 @@
+		"#version 450 core\n"
+		"layout(location = 0) in vec3 VertPos; \n"
+		"in float surfletH;\n"
+		"out vec4 FragColor;\n"
+		"void main() {\n"
+		"   FragColor = vec4(normalize(vec3(.5f - surfletH, .5f , .5f+ surfletH )), 1.0f);\n"
+		"}\n\0";
